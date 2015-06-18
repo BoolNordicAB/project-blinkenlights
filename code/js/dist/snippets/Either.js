@@ -1,3 +1,4 @@
+'use strict';
 /**
 * @module Either
 * @example
@@ -16,23 +17,23 @@ var message = Either.match(getThing(), {
   left: function (err) {return err.message}
 })
 */
-var Either = function Either() {}
+var Either = function Either() {};
 
 var Left = function left(value) {
-  this.value = value
-}
+  this.value = value;
+};
 var Right = function right(value) {
-  this.value = value
-}
+  this.value = value;
+};
 
 Either.match = function (either, matcher, dynamicThis) {
   return (matcher[either.constructor.name] || function () {})
-    .call(dynamicThis, (either || {}).value)
-}
+    .call(dynamicThis, (either || {}).value);
+};
 
 Either.left = function (value) {
-  return new Left(value)
-}
+  return new Left(value);
+};
 Either.right = function (value) {
-  return new Right(value)
-}
+  return new Right(value);
+};
