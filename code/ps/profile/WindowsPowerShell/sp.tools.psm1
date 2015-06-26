@@ -15,18 +15,18 @@ function WaitForSPSolutionJobToComplete([string]$solutionName)
 			if ($jobStatus -eq [Microsoft.SharePoint.Administration.SPRunningJobStatus]::Succeeded)
 			{
 				Write-Host "Solution '$solutionName' timer job succeeded" -ForegroundColor Green
-                return $true
+        return $true
 			}
 			# If the timer job failed or was aborted then fail
 			if ($jobStatus -eq [Microsoft.SharePoint.Administration.SPRunningJobStatus]::Aborted -or
-				$jobStatus -eq [Microsoft.SharePoint.Administration.SPRunningJobStatus]::Failed)
+					$jobStatus -eq [Microsoft.SharePoint.Administration.SPRunningJobStatus]::Failed)
 			{
 				Write-Host "Solution '$solutionName' has timer job status '$jobStatus'." -ForegroundColor Red
-                return $false
+        return $false
 			}
 			# Otherwise wait for the timer job to finish
 			Write-Host -NoNewLine "."
-            Sleep 1
+      Sleep 1
 		}
 		# Write a new line to the end of the '.....'
 		Write-Host

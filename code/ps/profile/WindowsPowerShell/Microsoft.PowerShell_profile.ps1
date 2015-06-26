@@ -13,9 +13,12 @@ function private:InitProfile()
 		Import-Module "$profile_path\$moduleName.psm1" 3> $null
 	}
 
+	# Import our custom modules.
 	im "ui.base" # don't use with cmder
 	im "sp.init"
 	im "sp.tools"
+
+	Import-Module "PowerTab"
 
 	Write-Host " ___________ "
 	Write-Host "/  ___| ___ \"
