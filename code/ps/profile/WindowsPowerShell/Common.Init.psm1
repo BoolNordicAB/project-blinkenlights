@@ -1,8 +1,4 @@
-# load SP module if not already loaded
-if(-not(gsnp | ? { $_.Name -eq "Microsoft.SharePoint.PowerShell"})) { asnp Microsoft.SharePoint.PowerShell }
-
-
-function private:InitSP()
+function private:InitCommon()
 {
   $profile_path = "$home\Documents\WindowsPowerShell\Modules"
 
@@ -14,4 +10,4 @@ function private:InitSP()
   im "Server\Network"
 }
 
-InitSP
+InitCommon
