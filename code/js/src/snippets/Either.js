@@ -2,38 +2,35 @@
 /**
 * @module Either
 * @example
-let getThing = function () {
-  let text = Math.random() < 0.5 ?
+const getThing = function () {
+  const text = Math.random() < 0.5 ?
     'such success' : null;
 
   if (text) {
     return Either.right({information: text})
   }
   return Either.left(new Error('much error'))
-}
+};
 
-var message = Either.match(getThing(), {
-  right: function (result) {return result.information},
-  left: function (err) {return err.message}
-})
+const message = Either.match(getThing(), {
+  right: (result) => result.information,
+  left: (err) => err.message
+});
 */
-var Either = function Either() {};
-
-var Left = function left(value) {
+const Either = function Either() {};
+const Left = function left(value) {
   this.value = value;
 };
-var Right = function right(value) {
+const Right = function right(value) {
   this.value = value;
-};
-
-Either.match = function (either, matcher, dynamicThis) {
+}
+Either.match = function match(either, matcher, dynamicThis) {
   return (matcher[either.constructor.name] || function () {})
     .call(dynamicThis, (either || {}).value);
 };
-
-Either.left = function (value) {
+Either.left = function left(value) {
   return new Left(value);
 };
-Either.right = function (value) {
+Either.right = function right(value) {
   return new Right(value);
 };

@@ -11,12 +11,5 @@ gulp.task('lint-watch', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('lint6-watch', function() {
-  return gulp.src('./src6/**/*.js')
-    .pipe(watch('./src6/**/*.js'))
-    .pipe(jshint('.jshintrc6'))
-    .pipe(jshint.reporter(stylish))
-    .pipe(gulp.dest('dist'));
-});
 
-gulp.task('default', ['lint-watch','lint6-watch']);
+gulp.task('default', ['lint-watch']);
