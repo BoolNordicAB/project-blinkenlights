@@ -14,9 +14,9 @@ function private:InitProfile()
   }
 
   # Import our custom modules.
-  im "ui.base" # don't use with cmder
-  im "sp.init"
-  im "sp.tools"
+  im "UI.Base" # don't use with cmder
+  im "Common.Init" # import common modules
+  im "SP.Init" # import sp modules
 
   Import-Module "PowerTab"
 
